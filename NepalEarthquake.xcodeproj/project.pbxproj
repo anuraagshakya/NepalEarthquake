@@ -12,6 +12,7 @@
 		CEEB181F21077E89001769F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB181D21077E89001769F2 /* Main.storyboard */; };
 		CEEB182121077E8B001769F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182021077E8B001769F2 /* Assets.xcassets */; };
 		CEEB182421077E8B001769F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182221077E8B001769F2 /* LaunchScreen.storyboard */; };
+		CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB182C21077FA4001769F2 /* Earthquake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CEEB182021077E8B001769F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEEB182321077E8B001769F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEEB182521077E8B001769F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEEB182C21077FA4001769F2 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		CEEB181821077E89001769F2 /* NepalEarthquake */ = {
 			isa = PBXGroup;
 			children = (
+				CEEB182B21077F90001769F2 /* Model */,
 				CEEB181921077E89001769F2 /* AppDelegate.swift */,
 				CEEB181B21077E89001769F2 /* ViewController.swift */,
 				CEEB181D21077E89001769F2 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				CEEB182521077E8B001769F2 /* Info.plist */,
 			);
 			path = NepalEarthquake;
+			sourceTree = "<group>";
+		};
+		CEEB182B21077F90001769F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEEB182C21077FA4001769F2 /* Earthquake.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEEB181C21077E89001769F2 /* ViewController.swift in Sources */,
+				CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */,
 				CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
