@@ -12,6 +12,7 @@ import Foundation
 // here: https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 
 struct Earthquake {
+    var title: String
     var place: String
     var time: UInt64
     var mag: Float

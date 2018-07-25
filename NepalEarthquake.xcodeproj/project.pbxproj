@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5666202107886700F880FC /* EarthquakeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */; };
+		CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */; };
 		CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181921077E89001769F2 /* AppDelegate.swift */; };
-		CEEB181C21077E89001769F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181B21077E89001769F2 /* ViewController.swift */; };
+		CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */; };
 		CEEB181F21077E89001769F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB181D21077E89001769F2 /* Main.storyboard */; };
 		CEEB182121077E8B001769F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182021077E8B001769F2 /* Assets.xcassets */; };
 		CEEB182421077E8B001769F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182221077E8B001769F2 /* LaunchScreen.storyboard */; };
@@ -19,9 +21,11 @@
 /* Begin PBXFileReference section */
 		385E3EAF25B5493AAA08A2FF /* Pods_NepalEarthquake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NepalEarthquake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8273FF216D108F65B50C622C /* Pods-NepalEarthquake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NepalEarthquake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake.debug.xcconfig"; sourceTree = "<group>"; };
+		CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewModel.swift; sourceTree = "<group>"; };
+		CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListDataSource.swift; sourceTree = "<group>"; };
 		CEEB181621077E89001769F2 /* NepalEarthquake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NepalEarthquake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEB181921077E89001769F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEEB181B21077E89001769F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewController.swift; sourceTree = "<group>"; };
 		CEEB181E21077E89001769F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEEB182021077E8B001769F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEEB182321077E8B001769F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +63,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE56661E2107884000F880FC /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */,
+				CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		CE5666212107BCB800F880FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CEEB180D21077E89001769F2 = {
 			isa = PBXGroup;
 			children = (
@@ -81,9 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				CEEB181921077E89001769F2 /* AppDelegate.swift */,
-				CEEB181B21077E89001769F2 /* ViewController.swift */,
 				CEEB181D21077E89001769F2 /* Main.storyboard */,
 				CEEB182B21077F90001769F2 /* Model */,
+				CE5666212107BCB800F880FC /* View */,
+				CE56661E2107884000F880FC /* View Model */,
 				CEEB182021077E8B001769F2 /* Assets.xcassets */,
 				CEEB182221077E8B001769F2 /* LaunchScreen.storyboard */,
 				CEEB182521077E8B001769F2 /* Info.plist */,
@@ -211,9 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEEB181C21077E89001769F2 /* ViewController.swift in Sources */,
+				CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */,
 				CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */,
 				CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */,
+				CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */,
+				CE5666202107886700F880FC /* EarthquakeListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
