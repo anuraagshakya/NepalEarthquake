@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE37AC50210856AE008DE500 /* MagnitudePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE37AC4F210856AE008DE500 /* MagnitudePickerDataSource.swift */; };
 		CE5666202107886700F880FC /* EarthquakeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */; };
 		CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */; };
 		CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181921077E89001769F2 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		385E3EAF25B5493AAA08A2FF /* Pods_NepalEarthquake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NepalEarthquake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8273FF216D108F65B50C622C /* Pods-NepalEarthquake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NepalEarthquake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake.debug.xcconfig"; sourceTree = "<group>"; };
+		CE37AC4F210856AE008DE500 /* MagnitudePickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnitudePickerDataSource.swift; sourceTree = "<group>"; };
 		CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewModel.swift; sourceTree = "<group>"; };
 		CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListDataSource.swift; sourceTree = "<group>"; };
 		CEEB181621077E89001769F2 /* NepalEarthquake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NepalEarthquake.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 			children = (
 				CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */,
 				CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */,
+				CE37AC4F210856AE008DE500 /* MagnitudePickerDataSource.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */,
+				CE37AC50210856AE008DE500 /* MagnitudePickerDataSource.swift in Sources */,
 				CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */,
 				CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */,
 				CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */,
