@@ -12,7 +12,6 @@ class EarthquakeListViewController: UITableViewController {
     var viewModel: EarthquakeListViewModel!
     let dataSource = EarthquakeListDataSource()
     var magnitudePicker: UIPickerView!
-    let magnitudePickerDataSource = MagnitudePickerDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
