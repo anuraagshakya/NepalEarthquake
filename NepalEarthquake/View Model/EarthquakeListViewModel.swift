@@ -15,11 +15,16 @@ class EarthquakeListViewModel {
     init(withDataSource dataSource: EarthquakeListDataSource) {
         self.dataSource = dataSource
     }
+    
+    func fetchAllEarthquakes() {
+        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+    }
+    
+    func fetchSignificantEarthquakes() {
+        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.geojson")
+    }
 
-    func fetchEarthquakes() {
-        // Initialise urlString with API url
-        let urlString = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
-        
+    private func fetchEarthquakes(withURL urlString: String) {
         // Create URL from urlString and asynchonously dispatch in a background
         //  queue the fetching of the string contents of the URL. If the status
         //  of the returned data is OK, call the 'parse' method.

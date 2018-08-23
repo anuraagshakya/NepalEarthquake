@@ -12,6 +12,7 @@ class EarthquakeListViewController: UITableViewController {
     var viewModel: EarthquakeListViewModel!
     let dataSource = EarthquakeListDataSource()
     var magnitudePicker: UIPickerView!
+    var filterMagnitudeBarItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class EarthquakeListViewController: UITableViewController {
         
         // Finally, we call the 'fetchEarthquakes' method of our view model
         //  which will query the API for data
-        viewModel.fetchEarthquakes()
+        viewModel.fetchAllEarthquakes()
     }
     
     @objc func presentFilterOptions() {
@@ -45,8 +46,8 @@ class EarthquakeListViewController: UITableViewController {
     @objc private func showFilterOptions() {
         let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        ac.addAction(UIAlertAction(title: "All", style: .default, handler: nil))
-        ac.addAction(UIAlertAction(title: "Significant", style: .default, handler: nil))
+        ac.addAction(UIAlertAction(title: "All", style: .default, handler: filterAllEarthquakes))
+        ac.addAction(UIAlertAction(title: "Significant", style: .default, handler: filterSignificantEarthquakes))
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
@@ -61,10 +62,20 @@ class EarthquakeListViewController: UITableViewController {
     private func setupToolbar() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        let filterMagnitudeBarItem = UIBarButtonItem(title: "Showing: All", style: .plain, target: self, action: #selector(showFilterOptions))
+        filterMagnitudeBarItem = UIBarButtonItem(title: "Showing: All", style: .plain, target: self, action: #selector(showFilterOptions))
 
         toolbarItems = [spacer, filterMagnitudeBarItem]
         navigationController?.isToolbarHidden = false
+    }
+    
+    private func filterAllEarthquakes(action: UIAlertAction) {
+        filterMagnitudeBarItem.title = "Showing: All"
+        viewModel.fetchAllEarthquakes()
+    }
+    
+    private func filterSignificantEarthquakes(action: UIAlertAction) {
+        filterMagnitudeBarItem.title = "Showing: Significant"
+        viewModel.fetchSignificantEarthquakes()
     }
     
 }
