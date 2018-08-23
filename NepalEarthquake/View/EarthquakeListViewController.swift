@@ -17,18 +17,11 @@ class EarthquakeListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the title of the view
-        self.title = "Earthquakes in the Last 24H"
+        setupNavagationBar()
+        setupToolbar()
         
         // Instantiate the view model and pass it a reference to the data source
         viewModel = EarthquakeListViewModel(withDataSource: dataSource)
-        
-        // Show bottom toolbar and add a filter button to it
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(presentFilterOptions))
-        
-        toolbarItems = [spacer, filterButton]
-        navigationController?.isToolbarHidden = false
         
         // EarthquakeListDataSource calls its onDataUpdated closure every time
         //  its data is updated. We use this closure to reload our table view in
@@ -40,22 +33,6 @@ class EarthquakeListViewController: UITableViewController {
         }
         tableView.dataSource = dataSource
         
-        // pickerView
-        magnitudePicker = UIPickerView()
-        magnitudePicker.dataSource = magnitudePickerDataSource
-        magnitudePicker.delegate = magnitudePickerDataSource
-        
-        magnitudePicker.translatesAutoresizingMaskIntoConstraints = false
-        magnitudePicker.isHidden = true
-        magnitudePicker.layer.borderWidth = 0.5
-        magnitudePicker.layer.borderColor = UIColor.black.cgColor
-        magnitudePicker.backgroundColor = UIColor.white
-        view.addSubview(magnitudePicker)
-        
-        magnitudePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        magnitudePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        magnitudePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
         // Finally, we call the 'fetchEarthquakes' method of our view model
         //  which will query the API for data
         viewModel.fetchEarthquakes()
@@ -65,5 +42,31 @@ class EarthquakeListViewController: UITableViewController {
         magnitudePicker.reloadAllComponents()
         magnitudePicker.isHidden = false
     }
+    
+    @objc private func showFilterOptions() {
+        let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        ac.addAction(UIAlertAction(title: "All", style: .default, handler: nil))
+        ac.addAction(UIAlertAction(title: "Significant", style: .default, handler: nil))
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
+    }
+    
+    private func setupNavagationBar() {
+        title = "Earthquakes"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupToolbar() {
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let filterMagnitudeBarItem = UIBarButtonItem(title: "Showing: All", style: .plain, target: self, action: #selector(showFilterOptions))
+
+        toolbarItems = [spacer, filterMagnitudeBarItem]
+        navigationController?.isToolbarHidden = false
+    }
+    
 }
 
