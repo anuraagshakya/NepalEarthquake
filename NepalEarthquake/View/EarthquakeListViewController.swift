@@ -9,7 +9,7 @@
 import UIKit
 
 class EarthquakeListViewController: UITableViewController {
-    var viewModel: EarthquakeListViewModel!
+    var viewModel: EarthquakesProvider!
     let dataSource = EarthquakeListDataSource()
     var magnitudePicker: UIPickerView!
     var filterMagnitudeBarItem: UIBarButtonItem!
@@ -21,7 +21,7 @@ class EarthquakeListViewController: UITableViewController {
         setupToolbar()
         
         // Instantiate the view model and pass it a reference to the data source
-        viewModel = EarthquakeListViewModel(withDataSource: dataSource)
+        viewModel = EarthquakesProvider()
         
         // EarthquakeListDataSource calls its onDataUpdated closure every time
         //  its data is updated. We use this closure to reload our table view in
@@ -35,7 +35,7 @@ class EarthquakeListViewController: UITableViewController {
         
         // Finally, we call the 'fetchEarthquakes' method of our view model
         //  which will query the API for data
-        viewModel.fetchAllEarthquakes()
+        self.dataSource.data = viewModel.fetchAllEarthquakes() ?? []
     }
     
     @objc func presentFilterOptions() {
@@ -70,12 +70,12 @@ class EarthquakeListViewController: UITableViewController {
     
     private func filterAllEarthquakes(action: UIAlertAction) {
         filterMagnitudeBarItem.title = "Showing: All"
-        viewModel.fetchAllEarthquakes()
+        self.dataSource.data = viewModel.fetchAllEarthquakes() ?? []
     }
     
     private func filterSignificantEarthquakes(action: UIAlertAction) {
         filterMagnitudeBarItem.title = "Showing: Significant"
-        viewModel.fetchSignificantEarthquakes()
+        self.dataSource.data = viewModel.fetchSignificantEarthquakes() ?? []
     }
     
 }

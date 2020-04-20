@@ -1,5 +1,5 @@
 //
-//  EarthquakeListViewModel.swift
+//  EarthquakesProvider.swift
 //  NepalEarthquake
 //
 //  Created by Anuraag Shakya on 24.07.18.
