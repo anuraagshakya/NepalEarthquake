@@ -13,35 +13,45 @@ import CoreLocation
 class MapViewController: UIViewController {
 
     let mapView = MapView()
+    let listButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .cyan
+        button.setTitle("🍔", for: .normal)
+        button.addTarget(self, action: #selector(showEarthquakesList), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view = mapView
+        view.addSubview(listButton)
+        NSLayoutConstraint.activate([
+            listButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            listButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16)
+        ])
 
         let kathmanduCoordinate = CLLocationCoordinate2D(latitude: 28.33, longitude: 84.00)
         let nepalRegion = MKCoordinateRegion(center: kathmanduCoordinate, span: MKCoordinateSpan(latitudeDelta: 4.6, longitudeDelta: 10.0))
         mapView.setRegion(nepalRegion, animated: false)
-        mapView.delegate = self
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    */
 
-}
+    @objc private func showEarthquakesList() {
+        navigationController?.pushViewController(EarthquakeListViewController(), animated: true)
+    }
 
-extension MapViewController: MKMapViewDelegate {
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
 
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(mapView.region)
+    override var childViewControllerForStatusBarHidden: UIViewController? {
+        nil
     }
 
 }

@@ -8,25 +8,40 @@
 
 import Foundation
 
+protocol EarthquakesProviderDelegate: NSObject {
+    func earthquakeProviderDidLoad(_ earthquakes: [Earthquake])
+    func earthquakeProviderDidError(_ error: Error)
+}
+
 class EarthquakesProvider {
-    var earthQuakes: [Earthquake]?
+    weak var delegate: EarthquakesProviderDelegate?
     
-    func fetchAllEarthquakes() -> [Earthquake]? {
-        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+    func fetchAllEarthquakes() {
+        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2010-01-01&minlatitude=23&maxlatitude=32&minlongitude=74&maxlongitude=94")
     }
     
-    func fetchSignificantEarthquakes() -> [Earthquake]? {
-        return fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.geojson")
+    func fetchSignificantEarthquakes() {
+        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2010-01-01&minmagnitude=5&minlatitude=23&maxlatitude=32&minlongitude=74&maxlongitude=94")
     }
 
-    private func fetchEarthquakes(withURL urlString: String) -> [Earthquake]? {
+    private func fetchEarthquakes(withURL urlString: String) {
         // Create URL from urlString and asynchonously dispatch in a background
         //  queue the fetching of the string contents of the URL. If the status
         //  of the returned data is OK, call the 'parse' method.
         if let url = URL(string: urlString) {
             DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
                 if let data = try? String(contentsOf: url) {
-                    self.earthQuakes = self.parse(data: data.data(using: .utf8)!)
+                    do {
+                        let earthQuakes = try self.parse(data: data.data(using: .utf8)!)
+                        DispatchQueue.main.async {
+                            self.delegate?.earthquakeProviderDidLoad(earthQuakes)
+                        }
+                    } catch(let error) {
+                        DispatchQueue.main.async {
+                            self.delegate?.earthquakeProviderDidError(error)
+                        }
+                    }
+
                 } else {
                     assertionFailure("Could not read contents of file")
                 }
@@ -34,18 +49,11 @@ class EarthquakesProvider {
         } else {
             assertionFailure("Could not valid URL from urlString")
         }
-        return nil
     }
     
-    private func parse(data: Data) -> [Earthquake]? {
+    private func parse(data: Data) throws -> [Earthquake] {
         let decoder = JSONDecoder()
-        var earthQuakes = [Earthquake]()
-        do {
-            earthQuakes = try decoder.decode([Earthquake].self, from: data)
-        } catch {
-            assertionFailure("Could not decode JSON")
-        }
-
-        return earthQuakes
+        let response = try decoder.decode(EarthquakesList.self, from: data)
+        return response.features
     }
 }

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		4B153A98244E12CA007A0A58 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153A96244E12CA007A0A58 /* MapViewController.swift */; };
 		4B153A99244E12CA007A0A58 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153A97244E12CA007A0A58 /* MapView.swift */; };
+		4B2AF99B244F4A800030E445 /* EarthquakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */; };
 		CE5666202107886700F880FC /* EarthquakesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56661F2107886700F880FC /* EarthquakesProvider.swift */; };
-		CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */; };
 		CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181921077E89001769F2 /* AppDelegate.swift */; };
 		CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */; };
 		CEEB182121077E8B001769F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182021077E8B001769F2 /* Assets.xcassets */; };
@@ -22,8 +22,8 @@
 		385E3EAF25B5493AAA08A2FF /* Pods_NepalEarthquake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NepalEarthquake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B153A96244E12CA007A0A58 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4B153A97244E12CA007A0A58 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeTableViewCell.swift; sourceTree = "<group>"; };
 		CE56661F2107886700F880FC /* EarthquakesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesProvider.swift; sourceTree = "<group>"; };
-		CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListDataSource.swift; sourceTree = "<group>"; };
 		CEEB181621077E89001769F2 /* NepalEarthquake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NepalEarthquake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEB181921077E89001769F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				CE56661F2107886700F880FC /* EarthquakesProvider.swift */,
-				CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -57,6 +56,7 @@
 				4B153A97244E12CA007A0A58 /* MapView.swift */,
 				4B153A96244E12CA007A0A58 /* MapViewController.swift */,
 				CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */,
+				4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +174,8 @@
 				4B153A98244E12CA007A0A58 /* MapViewController.swift in Sources */,
 				CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */,
 				CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */,
-				CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */,
 				CE5666202107886700F880FC /* EarthquakesProvider.swift in Sources */,
+				4B2AF99B244F4A800030E445 /* EarthquakeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

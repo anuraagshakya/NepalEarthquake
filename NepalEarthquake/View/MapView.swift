@@ -9,8 +9,4 @@
 import Foundation
 import MapKit
 
-class MapView: MKMapView {
-
-    
-
-}
+class MapView: MKMapView {}
