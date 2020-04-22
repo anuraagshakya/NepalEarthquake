@@ -11,16 +11,28 @@ import Foundation
 // Model for Earthquake data derived from GeoJSON format defined by the USGS
 // here: https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 
-struct Earthquake {
-    var title: String
+class Earthquake: NSObject, Decodable {
+    var title: String?
     var place: String
     var time: UInt64
     var mag: Float
     var urlString: String
     var location: Coordinates
-}
 
-extension Earthquake: Decodable {
+    init(title: String,
+         place: String,
+         time: UInt64,
+         mag: Float,
+         urlString: String,
+         location: Coordinates) {
+        self.title = title
+        self.place = place
+        self.time = time
+        self.mag = mag
+        self.urlString = urlString
+        self.location = location
+    }
+
     enum CodingKeys: String, CodingKey {
         case properties
         case geometry
@@ -38,7 +50,7 @@ extension Earthquake: Decodable {
         case coordinates
     }
 
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let properties = try container.nestedContainer(keyedBy: PropertiesCodingKeys.self, forKey: .properties)
