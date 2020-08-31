@@ -14,20 +14,20 @@ import Foundation
 class Earthquake: NSObject, Decodable {
     var title: String?
     var place: String
-    var time: UInt64
+    var date: Date?
     var mag: Float
     var urlString: String
     var location: Coordinates
 
     init(title: String,
          place: String,
-         time: UInt64,
+         date: Date?,
          mag: Float,
          urlString: String,
          location: Coordinates) {
         self.title = title
         self.place = place
-        self.time = time
+        self.date = date
         self.mag = mag
         self.urlString = urlString
         self.location = location
@@ -41,7 +41,7 @@ class Earthquake: NSObject, Decodable {
     enum PropertiesCodingKeys: String, CodingKey, Encodable {
         case title
         case place
-        case time
+        case date = "time"
         case mag
         case urlString = "url"
     }
@@ -58,7 +58,11 @@ class Earthquake: NSObject, Decodable {
 
         title = try properties.decode(String.self, forKey: .title)
         place = try properties.decode(String.self, forKey: .place)
-        time = try properties.decode(UInt64.self, forKey: .time)
+        let time_ms = try properties.decode(UInt64.self, forKey: .date)
+        let time_s = time_ms / 1000
+        if let interval = TimeInterval(exactly: time_s) {
+            date = Date(timeIntervalSince1970: interval)
+        }
         mag = try properties.decode(Float.self, forKey: .mag)
         urlString = try properties.decode(String.self, forKey: .urlString)
         let coordinates = try geometry.decode([Float].self, forKey: .coordinates)

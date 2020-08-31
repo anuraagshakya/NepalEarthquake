@@ -61,6 +61,7 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: EarthquakesProviderDelegate {
+
     func earthquakeProviderDidLoad(_ earthquakes: [Earthquake]) {
         for earthquake in earthquakes {
             mapView.addAnnotation(earthquake)
@@ -71,37 +72,49 @@ extension MapViewController: EarthquakesProviderDelegate {
         // fail silently
     }
 
-
 }
 
 extension MapViewController: MKMapViewDelegate {
+
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? Earthquake else {
       return nil
     }
     let identifier = "earthquake"
     var view: MKMarkerAnnotationView
-    if let dequeuedView = mapView.dequeueReusableAnnotationView(
-      withIdentifier: identifier) as? MKMarkerAnnotationView {
+    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
       dequeuedView.annotation = annotation
       view = dequeuedView
     } else {
-      view = MKMarkerAnnotationView(
-        annotation: annotation,
-        reuseIdentifier: identifier)
+      view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       view.canShowCallout = true
       view.calloutOffset = CGPoint(x: -5, y: 5)
       view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
     return view
   }
+
 }
 
 extension Earthquake: MKAnnotation {
+
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude),
                                longitude: CLLocationDegrees(location.longitude))
     }
+
+    var subtitle: String? {
+        guard let safeDate = date else {
+            return "N/A"
+        }
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.timeZone = .autoupdatingCurrent
+        return formatter.string(from: safeDate)
+    }
+
 }
 
 
