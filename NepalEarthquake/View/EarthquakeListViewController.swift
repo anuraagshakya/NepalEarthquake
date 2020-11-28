@@ -9,38 +9,24 @@
 import UIKit
 
 class EarthquakeListViewController: UITableViewController {
-    var viewModel: EarthquakeListViewModel!
-    let dataSource = EarthquakeListDataSource()
-    var magnitudePicker: UIPickerView!
-    var filterMagnitudeBarItem: UIBarButtonItem!
+    let earthquakeProvider = EarthquakesProvider()
+    var filterMagnitudeBarItem: UIBarButtonItem?
+    var earthquakes = [Earthquake]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavagationBar()
-        setupToolbar()
-        
-        // Instantiate the view model and pass it a reference to the data source
-        viewModel = EarthquakeListViewModel(withDataSource: dataSource)
-        
-        // EarthquakeListDataSource calls its onDataUpdated closure every time
-        //  its data is updated. We use this closure to reload our table view in
-        //  the event the data is changed.
-        dataSource.onDataUpdated = { [unowned self] in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        tableView.dataSource = dataSource
-        
-        // Finally, we call the 'fetchEarthquakes' method of our view model
-        //  which will query the API for data
-        viewModel.fetchAllEarthquakes()
+        earthquakeProvider.fetchAllEarthquakes()
+        filterMagnitudeBarItem = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(showFilterOptions))
+        navigationItem.rightBarButtonItem  = filterMagnitudeBarItem
+        earthquakeProvider.delegate = self
+        tableView.register(EarthquakeTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(EarthquakeTableViewCell.self))
     }
-    
-    @objc func presentFilterOptions() {
-        magnitudePicker.reloadAllComponents()
-        magnitudePicker.isHidden = false
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @objc private func showFilterOptions() {
@@ -57,26 +43,44 @@ class EarthquakeListViewController: UITableViewController {
     private func setupNavagationBar() {
         title = "Earthquakes"
         navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    private func setupToolbar() {
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        filterMagnitudeBarItem = UIBarButtonItem(title: "Showing: All", style: .plain, target: self, action: #selector(showFilterOptions))
-
-        toolbarItems = [spacer, filterMagnitudeBarItem]
-        navigationController?.isToolbarHidden = false
+        navigationItem.rightBarButtonItem = filterMagnitudeBarItem
     }
     
     private func filterAllEarthquakes(action: UIAlertAction) {
-        filterMagnitudeBarItem.title = "Showing: All"
-        viewModel.fetchAllEarthquakes()
+        filterMagnitudeBarItem?.title = "All"
+        earthquakeProvider.fetchAllEarthquakes()
     }
     
     private func filterSignificantEarthquakes(action: UIAlertAction) {
-        filterMagnitudeBarItem.title = "Showing: Significant"
-        viewModel.fetchSignificantEarthquakes()
+        filterMagnitudeBarItem?.title = "Significant"
+        earthquakeProvider.fetchSignificantEarthquakes()
     }
     
 }
 
+extension EarthquakeListViewController: EarthquakesProviderDelegate {
+
+    func earthquakeProviderDidLoad(_ earthquakes: [Earthquake]) {
+        self.earthquakes = earthquakes
+        tableView.reloadData()
+    }
+
+    func earthquakeProviderDidError(_ error: Error) {
+        print("EarthquakeProvider did report error: \(error)")
+    }
+
+}
+
+extension EarthquakeListViewController {
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return earthquakes.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(EarthquakeTableViewCell.self), for: indexPath)
+        cell.textLabel?.text = earthquakes[indexPath.row].title
+        return cell
+    }
+
+}

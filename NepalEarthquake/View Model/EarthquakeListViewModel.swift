@@ -7,64 +7,45 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-class EarthquakeListViewModel {
-    var dataSource: EarthquakeListDataSource
-
-    init(withDataSource dataSource: EarthquakeListDataSource) {
-        self.dataSource = dataSource
-    }
+class EarthquakesProvider {
+    var earthQuakes: [Earthquake]?
     
-    func fetchAllEarthquakes() {
+    func fetchAllEarthquakes() -> [Earthquake]? {
         fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
     }
     
-    func fetchSignificantEarthquakes() {
-        fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.geojson")
+    func fetchSignificantEarthquakes() -> [Earthquake]? {
+        return fetchEarthquakes(withURL: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.geojson")
     }
 
-    private func fetchEarthquakes(withURL urlString: String) {
+    private func fetchEarthquakes(withURL urlString: String) -> [Earthquake]? {
         // Create URL from urlString and asynchonously dispatch in a background
         //  queue the fetching of the string contents of the URL. If the status
         //  of the returned data is OK, call the 'parse' method.
         if let url = URL(string: urlString) {
             DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
                 if let data = try? String(contentsOf: url) {
-                    let json = JSON(parseJSON: data)
-                    
-                    if json["metadata"]["status"].intValue == 200  {
-                        self.parse(json: json)
-                        return
-                    } else {
-                        print("JSON status not OK")
-                    }
+                    self.earthQuakes = self.parse(data: data.data(using: .utf8)!)
                 } else {
-                    print("Could not read contents of file")
+                    assertionFailure("Could not read contents of file")
                 }
             }
         } else {
-            print("Could not valid URL from urlString")
+            assertionFailure("Could not valid URL from urlString")
         }
+        return nil
     }
     
-    private func parse(json: JSON) {
-        var data = [Earthquake]()
-        for dataPoint in json["features"].arrayValue {
-            let title = dataPoint["properties"]["title"].stringValue
-            let place = dataPoint["properties"]["place"].stringValue
-            let time = dataPoint["properties"]["time"].uInt64Value
-            let mag = dataPoint["properties"]["mag"].floatValue
-            let urlString = dataPoint["properties"]["url"].stringValue
-            let coordinatesArray = dataPoint["geometry"]["coordinates"].arrayValue
-            let coordinates = Coordinates(
-                longitude: coordinatesArray[0].floatValue,
-                latitude: coordinatesArray[1].floatValue,
-                depth: coordinatesArray[2].floatValue)
-            
-            let earthquake = Earthquake(title: title, place: place, time: time, mag: mag, urlString: urlString, location: coordinates)
-            data.append(earthquake)
+    private func parse(data: Data) -> [Earthquake]? {
+        let decoder = JSONDecoder()
+        var earthQuakes = [Earthquake]()
+        do {
+            earthQuakes = try decoder.decode([Earthquake].self, from: data)
+        } catch {
+            assertionFailure("Could not decode JSON")
         }
-        self.dataSource.data = data
+
+        return earthQuakes
     }
 }

@@ -7,54 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE5666202107886700F880FC /* EarthquakeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */; };
-		CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */; };
+		4B153A98244E12CA007A0A58 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153A96244E12CA007A0A58 /* MapViewController.swift */; };
+		4B153A99244E12CA007A0A58 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153A97244E12CA007A0A58 /* MapView.swift */; };
+		4B2AF99B244F4A800030E445 /* EarthquakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */; };
+		CE5666202107886700F880FC /* EarthquakesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56661F2107886700F880FC /* EarthquakesProvider.swift */; };
 		CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181921077E89001769F2 /* AppDelegate.swift */; };
 		CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */; };
-		CEEB181F21077E89001769F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB181D21077E89001769F2 /* Main.storyboard */; };
 		CEEB182121077E8B001769F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182021077E8B001769F2 /* Assets.xcassets */; };
 		CEEB182421077E8B001769F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEB182221077E8B001769F2 /* LaunchScreen.storyboard */; };
 		CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB182C21077FA4001769F2 /* Earthquake.swift */; };
-		F0EEEF570C3DEC66E02F6159 /* Pods_NepalEarthquake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385E3EAF25B5493AAA08A2FF /* Pods_NepalEarthquake.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		385E3EAF25B5493AAA08A2FF /* Pods_NepalEarthquake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NepalEarthquake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8273FF216D108F65B50C622C /* Pods-NepalEarthquake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NepalEarthquake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake.debug.xcconfig"; sourceTree = "<group>"; };
-		CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewModel.swift; sourceTree = "<group>"; };
-		CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListDataSource.swift; sourceTree = "<group>"; };
+		4B153A96244E12CA007A0A58 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4B153A97244E12CA007A0A58 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeTableViewCell.swift; sourceTree = "<group>"; };
+		CE56661F2107886700F880FC /* EarthquakesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesProvider.swift; sourceTree = "<group>"; };
 		CEEB181621077E89001769F2 /* NepalEarthquake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NepalEarthquake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEB181921077E89001769F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListViewController.swift; sourceTree = "<group>"; };
-		CEEB181E21077E89001769F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEEB182021077E8B001769F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEEB182321077E8B001769F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEEB182521077E8B001769F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEEB182C21077FA4001769F2 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
-		DF79B35743D92E2B3E320CBE /* Pods-NepalEarthquake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NepalEarthquake.release.xcconfig"; path = "Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		CEEB181321077E89001769F2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0EEEF570C3DEC66E02F6159 /* Pods_NepalEarthquake.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
-		1476959609BB5CCA14DFA5BB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8273FF216D108F65B50C622C /* Pods-NepalEarthquake.debug.xcconfig */,
-				DF79B35743D92E2B3E320CBE /* Pods-NepalEarthquake.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4FB1DC3B2AC1AEAFE8BB25DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +45,7 @@
 		CE56661E2107884000F880FC /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE56661F2107886700F880FC /* EarthquakeListViewModel.swift */,
-				CE5666222107BD0500F880FC /* EarthquakeListDataSource.swift */,
+				CE56661F2107886700F880FC /* EarthquakesProvider.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -75,7 +53,10 @@
 		CE5666212107BCB800F880FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B153A97244E12CA007A0A58 /* MapView.swift */,
+				4B153A96244E12CA007A0A58 /* MapViewController.swift */,
 				CEEB181B21077E89001769F2 /* EarthquakeListViewController.swift */,
+				4B2AF99A244F4A800030E445 /* EarthquakeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,7 +66,6 @@
 			children = (
 				CEEB181821077E89001769F2 /* NepalEarthquake */,
 				CEEB181721077E89001769F2 /* Products */,
-				1476959609BB5CCA14DFA5BB /* Pods */,
 				4FB1DC3B2AC1AEAFE8BB25DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -102,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				CEEB181921077E89001769F2 /* AppDelegate.swift */,
-				CEEB181D21077E89001769F2 /* Main.storyboard */,
 				CEEB182B21077F90001769F2 /* Model */,
 				CE5666212107BCB800F880FC /* View */,
 				CE56661E2107884000F880FC /* View Model */,
@@ -128,11 +107,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEEB182821077E8B001769F2 /* Build configuration list for PBXNativeTarget "NepalEarthquake" */;
 			buildPhases = (
-				57A62C18EDFFA17D53584F1C /* [CP] Check Pods Manifest.lock */,
 				CEEB181221077E89001769F2 /* Sources */,
-				CEEB181321077E89001769F2 /* Frameworks */,
 				CEEB181421077E89001769F2 /* Resources */,
-				B056765311DE76220B7462B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,75 +160,29 @@
 			files = (
 				CEEB182421077E8B001769F2 /* LaunchScreen.storyboard in Resources */,
 				CEEB182121077E8B001769F2 /* Assets.xcassets in Resources */,
-				CEEB181F21077E89001769F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		57A62C18EDFFA17D53584F1C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NepalEarthquake-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B056765311DE76220B7462B3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NepalEarthquake/Pods-NepalEarthquake-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CEEB181221077E89001769F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B153A99244E12CA007A0A58 /* MapView.swift in Sources */,
 				CEEB181C21077E89001769F2 /* EarthquakeListViewController.swift in Sources */,
+				4B153A98244E12CA007A0A58 /* MapViewController.swift in Sources */,
 				CEEB182D21077FA4001769F2 /* Earthquake.swift in Sources */,
 				CEEB181A21077E89001769F2 /* AppDelegate.swift in Sources */,
-				CE5666232107BD0500F880FC /* EarthquakeListDataSource.swift in Sources */,
-				CE5666202107886700F880FC /* EarthquakeListViewModel.swift in Sources */,
+				CE5666202107886700F880FC /* EarthquakesProvider.swift in Sources */,
+				4B2AF99B244F4A800030E445 /* EarthquakeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CEEB181D21077E89001769F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEEB181E21077E89001769F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CEEB182221077E8B001769F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -382,11 +312,10 @@
 		};
 		CEEB182921077E8B001769F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8273FF216D108F65B50C622C /* Pods-NepalEarthquake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH9MLLYLBL;
+				DEVELOPMENT_TEAM = 2D3NNT97LY;
 				INFOPLIST_FILE = NepalEarthquake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -401,11 +330,10 @@
 		};
 		CEEB182A21077E8B001769F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF79B35743D92E2B3E320CBE /* Pods-NepalEarthquake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH9MLLYLBL;
+				DEVELOPMENT_TEAM = 2D3NNT97LY;
 				INFOPLIST_FILE = NepalEarthquake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
